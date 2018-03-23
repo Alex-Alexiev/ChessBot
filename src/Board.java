@@ -124,17 +124,34 @@ public class Board {
 		return b;
 	}
 	
+	
 	public boolean isCheckMate(String colour) {
+		String kingColour;
 		if (colour.equals("black"))
-			colour = "white";
+			kingColour = "white";
 		else
-			colour = "black";
-		for (int r = 0; r < board.length; r++) {
-			for (int f = 0; f < board[r].length; f++) {
-				if (board[r][f] != null && board[r][f].getColour().equals(colour) && board[r][f] instanceof King) {
-					return board[r][f].getMoves(this, r, f).size() <= 0;
-				}
+			kingColour = "black";
+		if (!kingUnderAttack(kingColour)) return false;
+		for (Move m : this.AllPossibleMoves(kingColour)) {
+			Board temp = this.copyBoard();
+			temp.move(m.getR1(), m.getF1(), m.getR2(), m.getF2());
+			if (!temp.kingUnderAttack(kingColour)) {
+				return false;
 			}
+		}
+		return true;
+	}
+	
+	public boolean kingUnderAttack(String kingColour) {
+		String otherColour;
+		if (kingColour.equals("black"))
+			otherColour = "white";
+		else
+			otherColour = "black";
+		for (Move m : this.allAttackingMoves(otherColour)) {
+			Piece curr = board[m.getR2()][m.getF2()];
+			if (curr != null && curr.getColour().equals(kingColour) && curr instanceof King)
+				return true;
 		}
 		return false;
 	}
