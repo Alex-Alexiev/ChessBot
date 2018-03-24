@@ -9,7 +9,7 @@ public class Computer {
 	}
 	
 	public void move() {
-		BoardTree tree = new BoardTree(board, 1, colour);
+		BoardTree tree = new BoardTree(board, 3, colour);
 		Move best = tree.bestMove();
 		board.move(best.getR1(), best.getF1(), best.getR2(), best.getF2());
 	}

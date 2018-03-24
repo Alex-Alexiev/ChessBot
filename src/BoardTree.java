@@ -12,7 +12,7 @@ public class BoardTree {
 		public Node(Board board, Move move, String colour) {
 			this.board = board;
 			this.move = move;
-			this.value = board.evaluate(colour);
+			this.value = board.evaluate(colour, 0, 1, 2);
 		}
 		
 		public void addChild(Node node) {
@@ -33,6 +33,16 @@ public class BoardTree {
 		
 		public int getValue() {
 			return value;
+		}
+		
+		public Node bestChild() {
+			int bestIndex = 0;
+			for (int i = 0; i < children.size(); i++) {
+				if (children.get(i).value > children.get(bestIndex).value) {
+					bestIndex = i;
+				}
+			}
+			return children.get(bestIndex);
 		}
 		
 		public void print(Node n) {
@@ -63,13 +73,23 @@ public class BoardTree {
 	}
 	
 	public Move bestMove() {
-		int maxIndex = 0;
-		for (int i = 0; i < root.children.size(); i++) {
-			if (root.children.get(i).getValue() > root.children.get(maxIndex).getValue()) {
-				maxIndex = i;
+		maxValueTree(root, 0);
+		return root.bestChild().getMove();
+	}
+	
+	public int maxValueTree(Node n, int layer) {
+		if (layer >= layers-1) {
+			if (n.children.size() > 0) {
+				return n.bestChild().value;
+			}
+			else {
+				return 0;
 			}
 		}
-		return root.children.get(maxIndex).getMove();
+		for (Node child : n.children) {
+			child.value += maxValueTree(child, layer+1);
+		}
+		return 0;
 	}
 	
 	public void build(Node r, int layer) {

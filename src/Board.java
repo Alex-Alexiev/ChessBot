@@ -39,16 +39,16 @@ public class Board {
 		}
 	}
 
-	public int evaluate(String colour) {
+	public int evaluate(String colour, int spotValue, int captureValue, int lossValue) {
 		int value = 0;
 		if (isCheckMate(colour)) { 
 			return Integer.MAX_VALUE;
 		}
 		for (Move m : this.AllPossibleMoves(colour)) {
-			value++;
+			value+= spotValue;
 			Piece piece = board[m.getR2()][m.getF2()];
 			if (piece != null) {
-				value += 5 * piece.getValue();
+				value += captureValue * piece.getValue();
 			}
 		}
 		if (colour.equals("black"))
@@ -59,7 +59,7 @@ public class Board {
 			//king stackOverFlow
 			Piece piece = board[m.getR2()][m.getF2()];
 			if (piece != null) {
-				value -= 20 * piece.getValue();
+				value -= lossValue* piece.getValue();
 			}
 		}
 		return value;
@@ -157,27 +157,6 @@ public class Board {
 	}
 
 	public void printCoolBoard() {
-		boolean white = true;
-		int rank = 8;
-		for (int r = 0; r < board.length; r++) {
-			System.out.print(rank+ " |");
-			for (int f = 0; f < board[r].length; f++) {
-				if (board[r][f] == null) {
-					if (white) {
-						System.out.print("  |");
-					} else {
-						System.out.print("##|");
-					}
-				} else {
-					System.out.print(board[r][f] + "|");
-				}
-				white = !white;
-			}
-			rank--;
-			white = !white;
-			System.out.println("");
-		}
-		System.out.println("   a  b  c  d  e  f  g  h");
 		for (int r = 0; r < board.length; r++) {
 			for (int f = 0; f < board[r].length; f++) {
 				if (board[r][f] == null) {
