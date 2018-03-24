@@ -11,9 +11,11 @@ public class Rook extends Piece {
 
 	public String toString() {
 		if (colour.equals("black")) {
-			return "\u265C";
+			return "bR";
+			//return "\u265C";
 		}
-		return "\u2656";
+		return "wR";
+		//return "\u2656";
 	}
 	
 	public int getValue() {

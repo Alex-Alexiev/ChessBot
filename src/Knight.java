@@ -11,9 +11,11 @@ public class Knight extends Piece {
 
 	public String toString() {
 		if (colour.equals("black")) {
-			return "\u265E";
+			return "bN";
+			//return "\u265E";
 		}
-		return "\u2658";
+		return "wN"; 
+		//return "\u2658";
 	}
 
 	public int getValue() {

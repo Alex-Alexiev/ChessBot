@@ -11,9 +11,11 @@ public class Pawn extends Piece {
 
 	public String toString() {
 		if (colour.equals("black")) {
-			return "\u265F";
+			return "bP";
+			//return "\u265F";
 		}
-		return "\u2659";
+		return "wP";
+		//return "\u2659";
 	}
 	
 	public String getColour() {
@@ -62,7 +64,7 @@ public class Pawn extends Piece {
 			if (board.getPiece(spotR,  spotF) == null || board.getPiece(spotR,  spotF).getColour().equals(colour))
 				return false;
 		}
-		if (board.getPiece(spotR,  spotF) != null)
+		else if (board.getPiece(spotR,  spotF) != null)
 			return false;
 		return true;
 	}

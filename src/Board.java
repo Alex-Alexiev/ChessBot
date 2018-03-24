@@ -156,7 +156,28 @@ public class Board {
 		return false;
 	}
 
-	public void print() {
+	public void printCoolBoard() {
+		boolean white = true;
+		int rank = 8;
+		for (int r = 0; r < board.length; r++) {
+			System.out.print(rank+ " |");
+			for (int f = 0; f < board[r].length; f++) {
+				if (board[r][f] == null) {
+					if (white) {
+						System.out.print("  |");
+					} else {
+						System.out.print("##|");
+					}
+				} else {
+					System.out.print(board[r][f] + "|");
+				}
+				white = !white;
+			}
+			rank--;
+			white = !white;
+			System.out.println("");
+		}
+		System.out.println("   a  b  c  d  e  f  g  h");
 		for (int r = 0; r < board.length; r++) {
 			for (int f = 0; f < board[r].length; f++) {
 				if (board[r][f] == null) {
@@ -167,6 +188,30 @@ public class Board {
 			}
 			System.out.println("");
 		}
+	}
+	
+	public void print() {
+		boolean white = true;
+		int rank = 8;
+		for (int r = 0; r < board.length; r++) {
+			System.out.print(rank+ " |");
+			for (int f = 0; f < board[r].length; f++) {
+				if (board[r][f] == null) {
+					if (white) {
+						System.out.print("  |");
+					} else {
+						System.out.print("##|");
+					}
+				} else {
+					System.out.print(board[r][f] + "|");
+				}
+				white = !white;
+			}
+			rank--;
+			white = !white;
+			System.out.println("");
+		}
+		System.out.println("   a  b  c  d  e  f  g  h");
 	}
 
 }

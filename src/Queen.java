@@ -11,9 +11,11 @@ public class Queen extends Piece {
 
 	public String toString() {
 		if (colour.equals("black")) {
-			return "\u265B";
+			return "bQ";
+			//return "\u265B";
 		}
-		return "\u2655";
+		return "wQ";
+		//return "\u2655";
 	}
 
 	public ArrayList<Move> getMoves(Board board, int r, int f) {

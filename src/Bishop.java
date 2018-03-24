@@ -11,9 +11,11 @@ public class Bishop extends Piece{
 	
 	public String toString() {
 		if (colour.equals("black")) {
-			return "\u265D";
+			return "bB";
+			//return "\u265D";
 		}
-		return "\u2657";
+		return "wB";
+		//return "\u2657";
 	}
 
 	public ArrayList<Move> getMoves(Board board, int r, int f) {
