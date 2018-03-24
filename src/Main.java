@@ -6,6 +6,7 @@ public class Main {
 	
 	public static void main (String[] args) {
 		
+		
 		Board board = new Board();
 		Human human = new Human(board, "white");
 		Computer computer = new Computer(board, "black");
@@ -34,6 +35,29 @@ public class Main {
 				break;
 			}
 		}
+			
+		/*
+		Board board = new Board();
+		Computer computer1 = new Computer(board, "black");
+		Computer computer2 = new Computer(board, "white");
+		
+		while(true) {
+			board.print();
+			computer1.move();
+			System.out.println("");
+			board.print();
+			computer2.move();
+			System.out.println("");
+			if (board.isCheckMate("white")) {
+				System.out.println("Human wins");
+				break;
+			}
+			if (board.isCheckMate("black")) {
+				System.out.println("Computer wins");
+				break;
+			}
+		}
+		*/
 		
 		
 
