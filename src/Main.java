@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main (String[] args) {
 		
-		/*
+		
 		Board board = new Board();
 		Human human = new Human(board, "white");
 		Computer computer = new Computer(board, "black");
@@ -35,8 +35,8 @@ public class Main {
 				break;
 			}
 		}
-		*/	
-		
+			
+		/*
 		Board board = new Board();
 		Computer computer1 = new Computer(board, "black");
 		Computer computer2 = new Computer(board, "white");
@@ -57,6 +57,7 @@ public class Main {
 				break;
 			}
 		}
+		*/
 		
 		
 		
