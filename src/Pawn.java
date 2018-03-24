@@ -60,6 +60,16 @@ public class Pawn extends Piece {
 		String colour = curr.getColour();
 		if (!(spotR < 8 && spotR >= 0 && spotF < 8 && spotF >= 0))
 			return false;
+		if (spotR - pieceR == 2) {
+			if (board.getPiece(pieceR+1, pieceF) != null) {
+				return false;
+			}
+		}
+		if (spotR - pieceR == -2) {
+			if (board.getPiece(pieceR-1, pieceF) != null) {
+				return false;
+			}
+		}
 		if (Math.abs(spotF-pieceF) > 0) {
 			if (board.getPiece(spotR,  spotF) == null || board.getPiece(spotR,  spotF).getColour().equals(colour))
 				return false;
