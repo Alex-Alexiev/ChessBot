@@ -12,7 +12,7 @@ public class BoardTree {
 		public Node(Board board, Move move, String colour) {
 			this.board = board;
 			this.move = move;
-			this.value = board.evaluate(colour, 0, 1, 2);
+			this.value = board.evaluate(colour, 0, 5, 10);
 		}
 		
 		public void addChild(Node node) {
